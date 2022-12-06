@@ -12,9 +12,9 @@
              remains chrs]
         (do (if (nil? (first remains)) -1 (if (and (= 14 (count group)) (= 14 (count (set group))))
           i
-          (recur (inc i) (conj (if (= 14 (count group)) (vec (rest group)) group) (first remains)) (rest remains)))))))))
+          (recur (inc i) (conj (if (= 14 (count group)) (subvec group 1) group) (first remains)) (rest remains)))))))))
 
-;;(println (-main))
+(println (-main))
 
 (defn alternative []
   (with-open [rdr (io/reader "input.txt")]
@@ -23,4 +23,4 @@
         (filter (fn [e] (= 15 (count e)))
                 (map-indexed (fn [i el] (conj (set el) (+ i 14))) (partition 14 1 chrs)))))))
 
-(println (alternative))
+;;(println (alternative))
